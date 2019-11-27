@@ -2,12 +2,13 @@ class HomePagesController < ApplicationController
   include StoresHelper
 
   def index
-    province_id = params[:province_id].present? ? params[:province_id] : Settings.province_default
-    @stores = Store.ransack.result.includes(:district).by_province_id(province_id)
-      .page(params[:page]).per Settings.manager.combo.num_in_page
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @stores = Store.all.limit(6)
+  end
+
+
+  def search_store
+    @param = params[:store][:keyword]
+    @stores = Store.all.where('name LIKE ? or address Like ?', "%#{@param}%", "%#{@param}%")
+    render "home_pages/index"
   end
 end
