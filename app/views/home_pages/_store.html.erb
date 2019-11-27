@@ -1,10 +1,11 @@
-<div class="single-dish col-lg-4">
+<div class="single-dish col-lg-4 my-2">
   <div class="thumb">
     <%= link_to store_path(store) do %>
       <%= image_tag Settings.url_store, class: "img-fluid" %>
     <% end %>
   </div>
   <%= link_to store_path store do %>
-    <h4 class="text-uppercase pt-20 pb-20"><%= store.name %></h4>
+    <h4 class="text-uppercase mt-2"><%= store.name %></h4>
+    <p><%= store.address %></p>
   <% end %>
 </div>

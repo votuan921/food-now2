@@ -2,6 +2,7 @@
   <div class="thumb mb-3">
     <%= image_tag get_thumnail(product), class: "img-responsive" %>
   </div>
+  <p><%= product.name %></p>
   <%= form_tag carts_path, method: :post, remote: true do %>
     <%= hidden_field_tag :type, "#{Product.name}" %>
     <%= hidden_field_tag :product_id, "#{product.id}" %>
