@@ -5,22 +5,22 @@ class ImageUploader < CarrierWave::Uploader::Base
   
   storage :file
 
-  def store_dir
-    Settings.upload.dir
-  end
+  # def store_dir
+  #   Settings.upload.dir
+  # end
 
-  def extension_whitelist
-    %w(jpg jpeg gif png)
-  end
+  # def extension_whitelist
+  #   %w(jpg jpeg gif png)
+  # end
 
-  def filename
-    return if original_filename
+  # def filename
+  #   return if original_filename
 
-    @name ||= Digest::MD5.hexdigest(File.dirname(current_path)) 
-    "#{@name}.#{file.extension}"
-  end
+  #   @name ||= Digest::MD5.hexdigest(File.dirname(current_path)) 
+  #   "#{@name}.#{file.extension}"
+  # end
 
-  def default_url
-    ActionController::Base.helpers.asset_path Settings.upload.default
-  end
+  # def default_url
+  #   ActionController::Base.helpers.asset_path Settings.upload.default
+  # end
 end
