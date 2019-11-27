@@ -3,9 +3,11 @@ class OrdersController < ApplicationController
 
   def index
     @bill_details = []
-    session[:shopping_cart].each do |item|
-      @bill_details << BillDetail.new(bill_detailable_type: item["bill_detailable_type"], 
-        bill_detailable_id: item["bill_detailable_id"], count: item["count"])
+    if session[:shopping_cart] != nil 
+      session[:shopping_cart].each do |item|
+        @bill_details << BillDetail.new(bill_detailable_type: item["bill_detailable_type"], 
+          bill_detailable_id: item["bill_detailable_id"], count: item["count"])
+      end
     end
   end
 
