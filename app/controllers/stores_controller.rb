@@ -7,7 +7,7 @@ class StoresController < ApplicationController
   def show; end
 
   private
-  
+
   def load_combos
     @combos = Combo.by_store_id(params[:id]).take Settings.num_in_web
   end
@@ -15,4 +15,5 @@ class StoresController < ApplicationController
   def load_products
     @products = Product.by_store_id(params[:id]).take Settings.num_in_web
   end
+
 end

@@ -34,4 +34,6 @@ Rails.application.routes.draw do
     resources :bills
     resources :districts, only: %i(index)
   end
+
+  get "/searchs", to: "home_pages#search_store"
 end

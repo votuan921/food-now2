@@ -1,16 +1,15 @@
 <section class="banner-area relative" id="home">
   <div class="container">
     <div class="row fullscreen d-flex align-items-center justify-content-start">
-      <div class="banner-content col-lg-8 col-md-12">
-        <h4 class="text-white text-uppercase"><%= t ".perfect_choise" %></h4>
-        <h1>
-          <%= t ".delicious_cheap" %>
-        </h1>
-        <p class="text-white">
-          <% t ".description" %>
-        </p>
-        <%= link_to  t(".order"), "#", class: "primary-btn header-btn text-uppercase" %>
-      </div>												
+      <div class="banner-content w-75 m-auto">
+        <%= form_for :store, url: '/searchs', method: :get do |s| %>
+        <div class="row">
+          <%= s.text_field :keyword, class: "form-control py-3",
+            placeholder: "entry store name or address..." %>
+          <%= s.submit "Search", class: "btn btn-primary w-25 mx-auto my-3" %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>

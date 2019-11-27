@@ -49,7 +49,7 @@ end
 
 40.times do |n|
   name = FFaker::Address::city
-  
+
   District.create!(
     name: name,
     province_id: Province.ids.sample,
@@ -57,14 +57,16 @@ end
 end
 
 20.times do |n|
+  name = FFaker::Name.name
   address = FFaker::Address.city
   phone = FFaker::PhoneNumber.phone_number
   user_id = User.ids.sample
   district_id = District.ids.sample
   start_time = "6-am"
   end_time = "50-pm"
-  
+
   Store.create!(
+    name: name,
     address: address,
     phone: phone,
     user_id: user_id,
@@ -79,7 +81,7 @@ end
   status = 1
   price = rand(100000..900000)
   store_id = Store.ids.sample
-  
+
   Combo.create!(
     name: name,
     status: status,
@@ -92,7 +94,7 @@ end
   status = 1
   price = rand(100000..900000)
   store_id = Store.ids.sample
-  
+
   Product.create!(
     name: name,
     status: status,
@@ -103,7 +105,7 @@ end
 100.times do |n|
   combo_id = Combo.ids.sample
   product_id = Product.ids.sample
-  
+
   ComboProduct.create!(
     combo_id: combo_id,
     product_id: product_id)

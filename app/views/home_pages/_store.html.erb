@@ -4,10 +4,7 @@
       <%= image_tag Settings.url_store, class: "img-fluid" %>
     <% end %>
   </div>
-  
-  <p><%= store.district_name %></p>
   <%= link_to store_path store do %>
-    <h4 class="text-uppercase pt-20 pb-20"><%= store.address %></h4>
+    <h4 class="text-uppercase pt-20 pb-20"><%= store.name %></h4>
   <% end %>
-  <p><%= store.phone %></p>
 </div>
