@@ -1,0 +1,52 @@
+<header id="header" id="home">
+  <div class="container">
+    <div class="row align-items-center justify-content-between d-flex">
+      <div id="logo">
+        <%= link_to do %>
+          <%= image_tag "logo2.png", height: '40', width: '80' %>
+        <% end %>
+      </div>
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active">
+            <%= link_to t(".home"), root_url %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="menu-has-children">
+              <%= link_to current_user.name, "#" %>
+              <ul>
+                <% if current_user.admin? %>
+                  <li><%= link_to t(".admin"), admin_home_path %></li>
+                <% end %>
+                <% if current_user.manager? %>
+                  <li><%= link_to t(".manager"), manager_home_path %></li>
+                <% end %>
+                <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
+                <% unless current_user.provider.eql? "facebook" %>
+                  <li><%= link_to t(".edit"), edit_user_registration_path %></li>
+                <% end %>
+              </ul>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to t(".login"), new_user_session_path %>
+            </li>
+            <li>
+              <%= link_to t(".register"), new_user_registration_path %>
+            </li>
+          <% end %>
+          <li>
+            <%= link_to t(".cart"), orders_path %>
+          </li>
+          <li class="menu-has-children">
+            <%= link_to t(".language"), "#" %>
+            <ul>
+              <li><%= link_to t(".english"), locale:"en" %></li>
+              <li><%= link_to t(".vietnamese"), locale:"vi" %></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

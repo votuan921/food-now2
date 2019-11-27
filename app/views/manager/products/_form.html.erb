@@ -1,0 +1,62 @@
+<%= form_for [:manager, @product], class: "form-group" do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  
+  <div class="row">
+    <div class="col">
+      <%= f.label t(".name") %>
+      <%= f.text_field :name, class: "form-control mb-1" %>
+      <div class="my_error">
+        <% @product.errors[:name].each do |error| %>
+          <p><%= error %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col">
+      <%= f.label t(".price") %>
+      <%= f.text_field :price, data: {autonumeric: true}, class: "form-control mb-1" %>
+      <div class="my_error">
+        <% @product.errors[:price].each do |error| %>
+          <p><%= error %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col">
+      <%= f.label t(".store") %>
+      <%= f.select :store_id, options_for_select(get_stores,
+        selected: f.object.store_id),
+        {include_blank: false}, {class: "select2 form-control"} %>
+      <div class="my_error">
+        <% @product.errors[:store_id].each do |error| %>
+          <p><%= error %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-2">
+      <%= f.label t(".status") %>
+      <%= f.select :status,
+        options_for_select(enum_options_for_select(Product, :status),
+        selected: f.object.status), {include_blank: false},
+        {class: "form-control select2"} %>
+    </div>
+  </div>
+  
+  <div id="tasks">
+    <%= f.fields_for :images do |image| %>
+      <%= render "image_fields", {f: image} %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association f, :images,
+        class: "btn btn-success btn-sm mt-3" do %>
+        <i class="fa fa-plus"></i> <%= t ".add_image" %> 
+      <% end %>
+    </div>
+  </div><hr>
+
+  <%= button_tag class: "btn btn-primary btn-sm mt-3" do %>
+    <i class="fa fa-paper-plane"></i> <%= t ".submit" %> 
+  <% end %>
+  <%= button_tag type: :reset,
+    class: "btn btn-warning btn-sm mr-2 mt-3" do %>
+    <i class="fa fa-reply"></i> <%= t ".reset" %>
+  <% end %>
+<% end %>

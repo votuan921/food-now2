@@ -1,0 +1,89 @@
+validate:
+  VALID_EMAIL_REGEX: !ruby/regexp '/\A[^@\s]+@[^@\s]+\z/'
+account:
+  admin:
+    address: "Thôn Nội - Đức Thượng - Hoài Đức - Hà Nội"
+    email: "admin@gmail.com"
+    name: "Admin"
+    password: "111111"
+    phone: "0962199791"
+    role: "admin"
+  manager:
+    address: "Thôn Nội - Đức Thượng - Hoài Đức - Hà Nội"
+    email: "manager@gmail.com"
+    name: "Manager"
+    password: "111111"
+    phone: "0962199791"
+    role: "manager"
+  user:
+    password: "111111"
+    role: "normal"
+omniauth:
+  facebook: "facebook"
+user:
+  min_address_length: 3
+  max_address_length: 128
+  VALID_EMAIL_REGEX: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i'
+  max_phone_length: 250
+  min_name_length: 1
+  max_name_length: 150
+  min_password_length: 3
+  max_password_length: 250
+  role:
+    admin: "danger"
+    manager: "warning"
+    normal: "info"
+    enum_admin: "admin"
+    enum_manager: "manager"
+    enum_normal: "mormal"
+    number_admin: 2
+    number_manager: 1
+    number_normal: 0
+admin:
+  width_avata: 30
+  user:
+    num_in_page: 10
+    width_avata: 100 
+  combo:
+    num_in_page: 10
+manager:
+  width_avata: 30
+  combo:
+    num_in_page: 10
+  product:
+    num_in_page: 10
+  store:
+    num_in_page: 10
+  bill:
+    num_in_page: 10
+page:
+  num_in_page: 10
+  start: 1
+theme:
+  theme_config: "twitter-bootstrap-4"
+combo:
+  max_name_length: 128
+  min_name_length: 3
+upload:
+  default: "default.png"
+  dir: "uploads"
+  default: "default.png"
+  image:
+    default: "default.png"
+  width: 200
+  height: 200
+product:
+  max_name_length: 128
+  min_name_length: 3
+  width: 200
+  height: 200
+step: 1
+zero: 0
+unit: "VND"
+url_select2: "/assets/admin/select2.js"
+url_format_combo: "/assets/admin/format_price_combo.js"
+url_format_product: "/assets/admin/format_price_product.js"
+url_store: "store.jpg"
+province_default: 1
+num_in_web: 4
+quantity: 1

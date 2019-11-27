@@ -1,0 +1,41 @@
+<aside class="left-sidebar">
+  <div class="d-flex no-block nav-text-box align-items-center">
+    <span>
+      <%= image_tag "logo2.png", height: '40', width: '80' %>
+    </span>
+    <%= link_to admin_home_path, class: "waves-effect waves-dark ml-auto hidden-sm-down" do %>
+      <i class="ti-menu"></i>
+    <% end %>
+    <%= link_to root_path, class: "waves-effect waves-dark ml-auto hidden-sm-down" do %>
+      <i class="fa fa-home"></i>
+    <% end %>
+  </div>
+
+  <div class="scroll-sidebar">
+    <nav class="sidebar-nav">
+      <ul id="sidebarnav">
+        <li>
+          <%= link_to manager_home_path, class: "waves-effect waves-dark", "aria-expanded": "false" do %>
+            <i class="fa fa-tachometer"></i>
+            <span class="hide-menu"><%= t ".dashboard" %></span>
+          <% end %>
+
+          <%= link_to manager_combos_path, class: "waves-effect waves-dark", "aria-expanded": "false" do %>
+            <i class="fa fa-list-alt"></i>
+            <span class="hide-menu"><%= t ".combo" %></span>
+          <% end %>
+
+          <%= link_to manager_products_path, class: "waves-effect waves-dark", "aria-expanded": "false" do %>
+            <i class="fa fa-product-hunt"></i>
+            <span class="hide-menu"><%= t ".product" %></span>
+          <% end %>
+
+          <%= link_to manager_bills_path, class: "waves-effect waves-dark", "aria-expanded": "false" do %>
+            <i class="fa fa-bell"></i>
+            <span class="hide-menu"><%= t ".bill" %></span>
+          <% end %>
+        <li>
+      </ul>
+    </nav>
+  </div>
+</aside>

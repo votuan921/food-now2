@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+      <% if can? :create, Combo %>
+        <%= link_to new_manager_combo_path, class: "btn btn-sm btn-success" do %>
+        <i class="fa fa-plus"></i> <%= t ".new_combo" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-7 align-self-center text-right">
+      <div class="d-flex justify-content-end align-items-center">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to t(".home"), manager_home_path %></li>
+          <li class="breadcrumb-item active"><i class="fa fa-plus"></i> <%= t ".new_combo" %></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><%= t ".new_combo" %></h4>
+          <div class="border-search">
+            <%= render partial: "search", search: @search %>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><%= t ".stt" %></th>
+                  <th><%= t ".thumbnail" %></th>
+                  <th><%= t ".name" %></th>
+                  <th><%= t ".price" %></th>
+                  <th><%= t ".status" %></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="table_combos">
+                <%= render @combos %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= paginate @combos, theme: Settings.theme.theme_config %>
+</div>
