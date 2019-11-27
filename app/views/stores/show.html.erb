@@ -17,15 +17,4 @@
       <i class="fa fa-spinner"></i> <%= t ".see_more" %>
     </button>
   </div>
-
-  <h4><%= t ".combo" %></h4>
-  <div class="row" id="list_combos">
-    <%= render @combos %>
-  </div>
-  <div class="col-lg-12 d-flex justify-content-center mb-5">
-    <button class="btn btn-sm align-items-center" id="load_combo"
-      store_id="<%= params[:id] %>" page="<%= Settings.zero %>">
-      <i class="fa fa-spinner"></i> <%= t ".see_more" %>
-    </button>
-  </div>
 </div>

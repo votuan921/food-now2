@@ -1,5 +1,5 @@
 module CombosHelper
   def get_stores
-    current_user.stores.pluck :address, :id
+    current_user.stores.pluck :name, :id
   end
 end

@@ -9,6 +9,7 @@ class Bill < ApplicationRecord
   has_many :bill_details, dependent: :destroy
 
   delegate :name, to: :user, prefix: true
+  delegate :name, to: :store, prefix: true
   delegate :address, to: :store, prefix: true
 
   accepts_nested_attributes_for :bill_details, reject_if: :all_blank,

@@ -190,7 +190,7 @@ en:
       description: "There are %{count} locations in Hanoi from 06:00 - 24:00"
       product: "Products"
       combo: "Combos"
-      add_to_cart: "Add to cart"
+      add_to_cart: "Order"
       see_more: "See more"
   bills:
     edit:
@@ -198,13 +198,13 @@ en:
       success: "Update bill success"
   products:
     product:
-      add_to_cart: "Add to cart"
+      add_to_cart: "Order"
       comment:
         one: "1 comment"
         other: "%{count} comments"
   combos:
     combo:
-      add_to_cart: "Add to cart"
+      add_to_cart: "Order"
       comment:
         one: "1 comment"
         other: "%{count} comments"
@@ -217,6 +217,7 @@ en:
       edit:
         edit_store: "Edit store"
       form:
+        name: "Name"
         address: "Address"
         phone: "Phone"
         provinces: "Provinces"
@@ -280,6 +281,7 @@ en:
       edit:
         edit_store: "Edit store"
       form:
+        name: "Name"
         address: "Address"
         phone: "Phone"
         provinces: "Provinces"
@@ -288,6 +290,7 @@ en:
         reset: "Reset"
       index:
         stt: "STT"
+        name: "Name"
         phone: "Phone"
         address: "Address"
         sure: "Sure delete ?"
@@ -299,6 +302,12 @@ en:
         error: "Delete store fail"
       load_store:
         not_exits: "Store not exit"
+      image_fields:
+        delete_image: "Delete images"
+        alt: "Description image"
+      image_show:
+        previous: "Previous"
+        next: "Next"
     comments:
       load_comment:
         not_exits: "Comment not exit"

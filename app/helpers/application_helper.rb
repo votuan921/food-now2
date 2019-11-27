@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def get_stores
-    current_user.stores.pluck :address, :id
+    current_user.stores.pluck :name, :id
   end
 
   def get_thumnail imageable
@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def address_by_store_id store_id
-    Store.find_by(id: store_id).address
+    Store.find_by(id: store_id).name
   end
 
   def sum_money bill_details

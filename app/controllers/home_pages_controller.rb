@@ -2,7 +2,7 @@ class HomePagesController < ApplicationController
   include StoresHelper
 
   def index
-    @stores = Store.all.limit(6)
+    @stores = Store.all.limit(8)
   end
 
 

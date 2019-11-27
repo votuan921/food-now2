@@ -2,7 +2,7 @@
   <td><%= get_index_page bill_counter %></td>
   <td><%= bill.user_name %></td>
   <td><%= bill.address %></td>
-  <td><%= bill.store_address %></td>
+  <td><%= bill.store_name %></td>
   <td>
     <%= select_tag :status,
       options_for_select(enum_options_for_select(Bill, :status), selected: bill.status),
