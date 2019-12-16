@@ -50,4 +50,68 @@ module ApplicationHelper
   def sum_money bill_details
     bill_details.inject(0){|sum, n| sum + n.count * n.bill_detailable_price}
   end
+
+  def resource_name
+    :user
+  end
+  
+  def resource
+    @resource ||= User.new
+  end
+  
+  def resource_class
+    User
+  end
+  
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+  def get_food_avg comments
+    avg = 0
+    if comments.count > 0 
+      comments.each do |comment|
+        avg += comment.food
+      end
+      return avg/comments.count
+    else
+      return 0
+    end
+  end
+
+  def get_price_avg comments
+    avg = 0
+    if comments.count > 0 
+      comments.each do |comment|
+        avg += comment.price
+      end
+      return avg/comments.count
+    else
+      return 0
+    end
+  end
+
+  def get_punctuality_avg comments
+    avg = 0
+    if comments.count > 0 
+      comments.each do |comment|
+        avg += comment.punctuality
+      end
+      return avg/comments.count
+    else
+      return 0
+    end
+  end
+
+  def get_courtesy_avg comments
+    avg = 0
+    if comments.count > 0 
+      comments.each do |comment|
+        avg += comment.courtesy
+      end
+      return avg/comments.count
+    else
+      return 0
+    end
+  end
 end

@@ -3,5 +3,5 @@ development:
   encoding: utf8mb4
   database: food_order
   pool: 5
-  username: root
+  username: votuan
   password: acma123

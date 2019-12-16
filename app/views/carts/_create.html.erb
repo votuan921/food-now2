@@ -1,5 +1,57 @@
-<button type="button" class="btn btn-primary" data-toggle="modal"
-  id="add_success_to_cart" data-target="#modal_add_cart"><%= t ".success" %></button>
-<%= link_to orders_path, class: "btn btn-warning" do %>
-  <%= t ".payment" %>
-<% end %>
+<h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
+<table class="table table_summary">
+<tbody>
+  <% total_price = 0%>
+  <% if (current_order != nil ) && current_order.any? %>
+    <% current_order.each do |shop_cart| %>
+      <tr>
+        <td>
+          <form action="<%= carts_path %>", accept-charset="UTF-8", data-remote="true", method="post">
+            <%= hidden_field_tag :type, "#{Product.name}" %>
+            <%= hidden_field_tag :product_id, "#{shop_cart["bill_detailable_id"]}" %>
+            <%= hidden_field_tag :quantity, "-1" %>
+            <a href="#t_<%= shop_cart["bill_detailable_id"] %>" onclick="remove_product('<%= shop_cart["bill_detailable_id"] %>')" class="remove_item"><i class="icon_minus_alt"></i></a> <strong><%= shop_cart["count"] %>x</strong> <%= Product.find(shop_cart["bill_detailable_id"].to_i).name %>
+            <%= button_tag "", type: :submit, id: "t_#{shop_cart["bill_detailable_id"]}", style: "display: none" %>
+          </form>
+        </td>
+        <td>
+          <strong class="pull-right">$<%= Product.find(shop_cart["bill_detailable_id"].to_i).price * shop_cart["count"].to_i %></strong>
+          <% total_price += Product.find(shop_cart["bill_detailable_id"].to_i).price * shop_cart["count"].to_i %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</tbody>
+</table>
+<hr>
+<div class="row" id="options_2">
+  <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+  <label><input type="radio" value="" checked name="option_2" class="icheck">Delivery</label>
+  </div>
+  <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+  <label><input type="radio" value="" name="option_2" class="icheck">Take Away</label>
+  </div>
+</div><!-- Edn options 2 -->
+      
+<hr>
+<table class="table table_summary">
+<tbody>
+<tr>
+  <td>
+    Subtotal <span class="pull-right">$<%= total_price %></span>
+  </td>
+</tr>
+<tr>
+  <td>
+    Delivery fee <span class="pull-right">$0</span>
+  </td>
+</tr>
+<tr>
+  <td class="total">
+    TOTAL <span class="pull-right">$<%= total_price %></span>
+  </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<a class="btn_full" href="<%= show_order_path %>">Order now</a>

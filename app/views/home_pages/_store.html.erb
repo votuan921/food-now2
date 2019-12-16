@@ -1,11 +1,42 @@
-<div class="single-dish col-lg-3 my-2">
-  <div class="thumb">
-    <%= link_to store_path(store) do %>
-      <%= image_tag get_thumnail(store), class: "img-fluid", width: "396px", height: "247px" %>
-    <% end %>
-  </div>
-  <%= link_to store_path store do %>
-    <h4 class="text-uppercase mt-2"><%= store.name %></h4>
-    <p><%= store.address %></p>
-  <% end %>
-</div>
+<div class="strip_list wow fadeIn" data-wow-delay="0.1s">
+	<% if store.vip > 1 %>
+		<div class="ribbon_1">
+			Popular
+		</div>
+	<% end %>
+	<div class="row">
+		<div class="col-md-9 col-sm-9">
+			<div class="desc">
+				<div class="thumb_strip">
+					<a href="detail_page.html"><%= image_tag get_thumnail(store) %></a>
+				</div>
+				<div class="rating">
+					<i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i> (<small><a href="#0">98 reviews</a></small>)
+					<% if store.vip > 0 %>
+						<i class="icon-angle-double-up">
+							<strong> Highly recommend </strong></small> 
+						</i>
+					<% end %>
+				</div>
+				<h3><%= store.name %></h3>
+				<div class="type">
+					<!--Mexican / American -->
+				</div>
+				<div class="location">
+					<%= store.address %> <span class="opening">Opens at <%= store.start_time %>.</span>
+				</div>
+				<ul>
+					<li>Take away<i class="icon_check_alt2 ok"></i></li>
+					<li>Delivery<i class="icon_check_alt2 no"></i></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-3">
+			<div class="go_to">
+				<div>
+					<a href="<%= store_path(store) %>" class="btn_1">View Menu</a>
+				</div>
+			</div>
+		</div>
+	</div><!-- End row-->
+</div><!-- End strip_list-->

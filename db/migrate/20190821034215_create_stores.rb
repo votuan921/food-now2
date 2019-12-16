@@ -5,7 +5,6 @@ class CreateStores < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :phone
       t.references :user, foreign_key: true
-      t.references :district, foreign_key: true
       t.string :start_time
       t.string :end_time
 

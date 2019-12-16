@@ -1,19 +1,24 @@
 module CartsHelper
   def add_to_cart type, quantity, id
     shopping_cart = session[:shopping_cart] ||= []
+    rmv_cart = []
     flag = true
 
     shopping_cart.each_with_index do |item, key|
       if item["bill_detailable_type"].eql?(type) && item["bill_detailable_id"].eql?(id)
         shopping_cart[key]["count"] = shopping_cart[key]["count"].to_i + quantity.to_i
         flag = false
+        if shopping_cart[key]["count"] <= 0
+          rmv_cart << shopping_cart[key]
+        end
         break
       end
     end
 
-    shopping_cart << {bill_detailable_type: type, bill_detailable_id: id, count: quantity} if flag
+    shopping_cart << {"bill_detailable_type" => type, "bill_detailable_id" => id, "count" => quantity} if flag
+    shopping_cart -= rmv_cart
     session[:shopping_cart] = shopping_cart
-    puts session[:shopping_cart]
+    # puts session[:shopping_cart]
   end
 
   def update_cart type, quantity, id

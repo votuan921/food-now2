@@ -2,6 +2,7 @@
   <div id="error_explanation" class="mb-5">
     <div class="alert alert-danger">
       <%= t ".error", count: pluralize(object.errors.count, "error") %>
+      <%= object.errors.full_messages %>
     </div>
   </div>
 <% end %>

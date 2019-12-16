@@ -1,52 +1,67 @@
 <header id="header" id="home">
-  <div class="container">
-    <div class="row align-items-center justify-content-between d-flex">
-      <div id="logo">
-        <%= link_to do %>
-          <%= image_tag "logofood.png", height: '40', width: '80' %>
-        <% end %>
-      </div>
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active">
-            <%= link_to t(".home"), root_url %>
-          </li>
-          <% if user_signed_in? %>
-            <li class="menu-has-children">
-              <%= link_to current_user.name, "#" %>
-              <ul>
-                <% if current_user.admin? %>
-                  <li><%= link_to t(".admin"), admin_home_path %></li>
-                <% end %>
-                <% if current_user.manager? %>
-                  <li><%= link_to t(".manager"), manager_home_path %></li>
-                <% end %>
-                <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
-                <% unless current_user.provider.eql? "facebook" %>
-                  <li><%= link_to t(".edit"), edit_user_registration_path %></li>
-                <% end %>
-              </ul>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to t(".login"), new_user_session_path %>
-            </li>
-            <li>
-              <%= link_to t(".register"), new_user_registration_path %>
-            </li>
-          <% end %>
-          <li>
-            <%= link_to t(".cart"), orders_path %>
-          </li>
-          <li class="menu-has-children">
-            <%= link_to t(".language"), "#" %>
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col--md-4 col-sm-4 col-xs-4">
+            <a href="<%= root_path %>" id="logo">
+            <img src=<%= image_path("img/logofood.png") %> width="60" height="30" alt="" data-retina="true" class="hidden-xs">
+            <img src=<%= image_path("img/logo_mobile.png") %> width="59" height="23" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
+            </a>
+        </div>
+        <nav class="col--md-8 col-sm-8 col-xs-8">
+        <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+        <div class="main-menu">
+            <div id="header_menu">
+                <img src=<%= image_path("img/logofood.png") %> width="60" height="30" alt="" data-retina="true">
+            </div>
+            <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
             <ul>
-              <li><%= link_to t(".english"), locale:"en" %></li>
-              <li><%= link_to t(".vietnamese"), locale:"vi" %></li>
+                <li>
+                <a href="<%= root_path %>" class="show-submenu">Home</a>
+                </li>
+                <% if user_signed_in? %>
+                    <% if current_user.admin? || current_user.manager? %>
+                        <li>
+                        <a href="<%= rails_admin_path %>" class="show-submenu">Dashboard</a>
+                        </li>
+                    <% else %>
+                        <li>
+                        <a href="<%= submit_store_path %>" class="show-submenu">Submit Store</a>
+                        </li>
+                    <% end %>
+                <% end %>
+                <li>
+                    <a href="<%= show_order_path %>" class="show-submenu">Cart</a>
+                </li>
+                <!--<li><a href="about.html">About us</a></li>-->
+                <!--<li><a href="faq.html">Faq</a></li>-->
+                <!--<li class="submenu">
+                <a href="javascript:void(0);" class="show-submenu">Pages<i class="icon-down-open-mini"></i></a>
+                <ul>
+                    <li><a href="RTL_version/index.html">RTL version</a></li>
+                    <li><a href="admin.html">Admin section</a></li>
+                    <li><a href="submit_driver.html">Submit Driver</a></li>
+                    <li><a href="#0" data-toggle="modal" data-target="#login_2">User Login</a></li>
+                    <li><a href="#0" data-toggle="modal" data-target="#register">User Register</a></li>
+                    <li><a href="detail_page_2.html">Restaurant detail page</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                    <li><a href="coming_soon/index.html">Coming soon page</a></li>
+                    <li><a href="shortcodes.html">Shortcodes</a></li>
+                    <li><a href="icon_pack_1.html">Icon pack 1</a></li>
+                    <li><a href="icon_pack_2.html">Icon pack 2</a></li>
+                </ul>
+                </li>-->
+                <% if user_signed_in? %>
+                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
+                <% else %>
+                    <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
+                    <li><a href="#0" data-toggle="modal" data-target="#register">Register</a></li>
+                    <%# <%= link_to "Login", "", data: {toggle: "modal", target: ".bd-example-modal-lg"} %>
+                <% end %>
+                <!--<li><a href="#0">Purchase this template</a></li>-->
             </ul>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
+        </div><!-- End main-menu -->
+        </nav>
+    </div><!-- End row -->
+  </div><!-- End container -->
 </header>

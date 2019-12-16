@@ -13,11 +13,6 @@ class User < ApplicationRecord
   has_many :combos, through: :stores
   has_many :products, through: :stores
 
-  validates :address, presence: true, length:
-    {minimum: Settings.user.min_address_length,
-    maximum: Settings.user.max_address_length}, allow_nil: true
-  validates :phone, presence: true, length:
-    {maximum: Settings.user.max_phone_length}, allow_nil: true
   validates :name, presence: true, length:
     {minimum: Settings.user.min_name_length,
     maximum: Settings.user.max_name_length}, allow_nil: true

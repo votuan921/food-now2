@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_041253) do
+ActiveRecord::Schema.define(version: 2019_12_16_072827) do
 
-  create_table "bill_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "bill_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "bill_id"
     t.string "bill_detailable_type"
     t.integer "bill_detailable_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_09_08_041253) do
     t.index ["bill_id"], name: "index_bill_details_on_bill_id"
   end
 
-  create_table "bills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "bills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "status", default: 1
     t.integer "user_id"
     t.integer "store_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_09_08_041253) do
     t.index ["user_id"], name: "index_bills_on_user_id"
   end
 
-  create_table "combo_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "combo_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "product_id"
     t.integer "combo_id"
     t.integer "count"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_09_08_041253) do
     t.index ["product_id"], name: "index_combo_products_on_product_id"
   end
 
-  create_table "combos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "combos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "status", default: 1
     t.float "price"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_09_08_041253) do
     t.index ["store_id"], name: "index_combos_on_store_id"
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content"
     t.integer "parent_comment_id", default: 0
     t.integer "user_id"
@@ -57,20 +57,16 @@ ActiveRecord::Schema.define(version: 2019_09_08_041253) do
     t.integer "commentable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "food"
+    t.integer "price"
+    t.integer "punctuality"
+    t.integer "courtesy"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["parent_comment_id"], name: "index_comments_on_parent_comment_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "districts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "name"
-    t.integer "province_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["province_id"], name: "index_districts_on_province_id"
-  end
-
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "url"
     t.string "alt"
     t.integer "image_type"
@@ -79,7 +75,7 @@ ActiveRecord::Schema.define(version: 2019_09_08_041253) do
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
-  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.float "price"
     t.integer "status", default: 1
@@ -87,27 +83,20 @@ ActiveRecord::Schema.define(version: 2019_09_08_041253) do
     t.index ["store_id"], name: "index_products_on_store_id"
   end
 
-  create_table "provinces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.string "phone"
     t.integer "user_id"
-    t.integer "district_id"
     t.string "start_time"
     t.string "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["district_id"], name: "index_stores_on_district_id"
+    t.integer "vip"
     t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.string "phone"

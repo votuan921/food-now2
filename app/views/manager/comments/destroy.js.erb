@@ -1,5 +1,0 @@
-<% if @comment.errors.present? %>
-    alert('<%= t ".fail" %>');
-<% else %>
-  $('#comment-<%= @comment.id %>').remove();
-<% end %>

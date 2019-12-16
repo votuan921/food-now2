@@ -42,33 +42,11 @@ namespace :seed_data do
     end
   end
 
-  task provinces: :environment do
-    20.times do |n|
-      name = FFaker::AddressCA::province
-    
-      Province.create!(
-        name: name,
-        created_at: Time.zone.now)
-    end
-  end
-
-  task districts: :environment do
-    50.times do |n|
-      name = FFaker::Address::city
-      
-      District.create!(
-        name: name,
-        province_id: Province.ids.sample,
-        created_at: Time.zone.now)
-    end
-  end
-
   task stores: :environment do
     50.times do |n|
       address = FFaker::Address.city
       phone = FFaker::PhoneNumber.phone_number
       user_id = User.ids.sample
-      district_id = District.ids.sample
       start_time = "6-am"
       end_time = "20-pm"
       
@@ -76,7 +54,6 @@ namespace :seed_data do
         address: address,
         phone: phone,
         user_id: user_id,
-        district_id: district_id,
         start_time: start_time,
         end_time: end_time,
         created_at: Time.zone.now)

@@ -35,30 +35,11 @@ admin.role = "admin"
 admin.password_confirmation = "123456"
 admin.save!
 
-10.times do |n|
-  name = FFaker::AddressCA::province
-
-  Province.create!(
-    name: name,
-    created_at: Time.zone.now)
-end
-
-5.times do |n|
-  name = FFaker::Address::city
-
-  District.create!(
-    name: name,
-    province_id: Province.ids.sample,
-    created_at: Time.zone.now)
-end
-
-
 20.times do |n|
   name = FFaker::Name.name
   address = FFaker::Address.city
   phone = FFaker::PhoneNumber.phone_number
   user_id = User.where('role = 1')[n].id
-  district_id = District.find(1 + rand(5)).id
   start_time = "6-am"
   end_time = "5-pm"
 
@@ -66,8 +47,8 @@ end
     name: name,
     address: address,
     phone: phone,
+    vip: 0,
     user_id: user_id,
-    district_id: district_id,
     start_time: start_time,
     end_time: end_time,
     created_at: Time.zone.now)

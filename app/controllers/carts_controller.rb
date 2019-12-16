@@ -1,9 +1,10 @@
 class CartsController < ApplicationController
   skip_load_and_authorize_resource
+  skip_before_action :verify_authenticity_token
+  respond_to :html, :js
   include CartsHelper
 
   def create
-    puts "nnaon"
     type = params[:type]
     quantity = params[:quantity]
     id = params[:product_id].present? ? params[:product_id] : params[:combo_id]

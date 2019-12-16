@@ -1,0 +1,508 @@
+<!-- SubHeader =============================================== -->
+<section class="parallax-window" data-parallax="scroll" data-image-src=<%= image_path("img/avb.jpg") %> data-natural-width="1400" data-natural-height="470">
+    <div id="subheader">
+	<div id="sub_content">
+    	<div id="thumb"><%= image_tag get_thumnail(@store) %></div>
+			<div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i></div>
+			<h1><%= @store.name %></h1>
+			<div><i class="icon_pin"></i><%= @store.address %></div>
+    </div><!-- End sub_content -->
+</div><!-- End subheader -->
+</section><!-- End section -->
+<!-- End SubHeader ============================================ -->
+
+    <div id="position">
+        <div class="container">
+            <ul>
+                <li><a href="#0">Home</a></li>
+                <li><a href="#0">Category</a></li>
+                <li>Page active</li>
+            </ul>
+            <a href="#0" class="search-overlay-menu-btn"><i class="icon-search-6"></i> Search</a>
+        </div>
+    </div><!-- Position -->
+
+    <div class="collapse" id="collapseMap">
+            <div id="map" class="map"></div>
+    </div><!-- End Map -->
+
+<!-- Content ================================================== -->
+<div class="container margin_60_35">
+		<div class="row">
+        
+			<div class="col-md-4">
+				<p>
+					<a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">View on map</a>
+				</p>
+				<div class="box_style_2">
+					<h4 class="nomargin_top">Opening time <i class="icon_clock_alt pull-right"></i></h4>
+					<ul class="opening_list">
+						<li>Monday<span>12.00am-11.00pm</span></li>
+						<li>Tuesday<span>12.00am-11.00pm</span></li>
+						<li>Wednesday <span class="label label-danger">Closed</span></li>
+						<li>Thursday<span>12.00am-11.00pm</span></li>
+						<li>Friday<span>12.00am-11.00pm</span></li>
+						<li>Saturday<span>12.00am-11.00pm</span></li>
+						<li>Sunday <span class="label label-danger">Closed</span></li>
+					</ul>
+				</div>
+				<div class="box_style_2 hidden-xs" id="help">
+					<i class="icon_lifesaver"></i>
+					<h4>Need <span>Help?</span></h4>
+					<a href="tel://004542344599" class="phone">+45 423 445 99</a>
+					<small>Monday to Friday 9.00am - 7.30pm</small>
+				</div>
+			</div>
+            
+			<div class="col-md-8">
+				<div class="box_style_2">
+					<h2 class="inner">Description</h2>
+                    
+                    <div id="Img_carousel" class="slider-pro">
+                        <div class="sp-slides">
+							<% @images.each do |image| %>
+								<div class="sp-slide">
+									<img alt="" class="sp-image" src="<%= image_path (image.url) %>" 
+									data-src="<%= image_path (image.url) %>" 
+									data-small="<%= image_path (image.url) %>" 
+									data-medium="<%= image_path (image.url) %>" 
+									data-large="<%= image_path (image.url) %>" 
+									data-retina="<%= image_path (image.url) %>">
+								</div>
+							<% end %>
+                        </div>
+                        <div class="sp-thumbnails">
+							<% @images.each do |image| %>
+                            	<img alt="" class="sp-thumbnail" src="<%= image_path (image.url) %>">
+							<% end %>	
+                        </div>
+                    </div>
+                    <h3>About us</h3>
+					<p>
+						Lorem ipsum dolor sit amet, ius sonet meliore partiendo cu. Nobis laudem mediocrem cum et. Debitis nonumes similique te eam, blandit eligendi principes sea no. Cu eum quidam expetendis.
+					</p>
+					<p class="add_bottom_30">
+						Lorem ipsum dolor sit amet, ex has recusabo adipiscing, aliquip alienum at vis, eos id qualisque quaerendum. Soleat habemus duo no, te quo dicam everti, sale ullum movet per ea. Cu cum laudem quaeque, agam decore nullam ei vis. Nec ad tota etiam eirmod. Harum debitis detraxit ut vel, eu vel option oporteat.
+					</p>
+					<div id="summary_review">
+						<div id="general_rating">
+							<%= @comments.count %> Reviews
+							<div class="rating">
+								<i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
+							</div>
+						</div>
+                        
+						<div class="row" id="rating_summary">
+							<div class="col-md-6">
+								<ul>
+									<li>Food Quality
+									<div class="rating">
+										<% avg = get_food_avg(@comments)%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+									</div>
+									</li>
+									<li>Price
+									<div class="rating">
+										<% avg = get_price_avg(@comments) %>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+									</div>
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-6">
+								<ul>
+									<li>Punctuality
+									<div class="rating">
+										<% avg = get_punctuality_avg(@comments) %>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+									</div>
+									</li>
+									<li>Courtesy
+									<div class="rating">
+										<% avg = get_courtesy_avg(@comments) %>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+									</div>
+									</li>
+								</ul>
+							</div>
+						</div><!-- End row -->
+						<hr class="styled">
+						<% if user_signed_in? %>
+							<a href="#" class="btn_1 add_bottom_15" data-toggle="modal" data-target="#myReview">Leave a review</a>
+						<% else %>
+							<a href="#" class="btn_1 add_bottom_15" data-toggle="modal" data-target="#login_2">Login to review</a>
+						<% end %>
+					</div><!-- End summary_review -->
+                    <% @comments.each do |comment| %>
+						<div class="review_strip_single">
+							<img src=<%= image_path("img/avatar#{rand(1..3)}.jpg") %> alt="" class="img-circle">
+							<small> - <%= comment.created_at %> -</small>
+							<h4><%= User.find_by(id: comment.user_id).name %></h4>
+							<p>
+								<%= comment.content %>
+							</p>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="rating">
+										<% avg = comment.food %>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+									</div>
+									Food Quality
+								</div>
+								<div class="col-md-3">
+									<div class="rating">
+										<% avg = comment.price %>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+									</div>
+									Price
+								</div>
+								<div class="col-md-3">
+									<div class="rating">
+										<% avg = comment.punctuality %>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+									</div>
+									Punctuality
+								</div>
+								<div class="col-md-3">
+									<div class="rating">
+										<% avg = comment.courtesy %>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+										<% if avg >=1 %>
+											<i class="icon_star voted"></i>
+										<% else %>
+											<i class="icon_star"></i>
+										<% end %>
+										<% avg -= 1%>
+									</div>
+									Courtesy
+								</div>
+							</div><!-- End row -->
+						</div><!-- End review strip -->
+					<% end %>                 
+				</div><!-- End box_style_1 -->
+			</div>
+		</div><!-- End row -->
+</div><!-- End container -->
+<% if user_signed_in? %>
+	<div class="modal fade" id="myReview" tabindex="-1" role="dialog" aria-labelledby="review" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+					<form action="<%= store_comment_path %>" class="popup-form" method="post">  
+						<div class="login_icon"><i class="icon_comment_alt"></i></div>
+						<input name="comment[commentable_type]" type="hidden" value="<%= Store.name %>">
+						<input name="comment[commentable_id]" type="hidden" value="<%= @store.id %>">
+						<input name="comment[user_id]" type="hidden" value="<%= current_user.id %>">	
+						<div class="row">
+							<div class="col-md-6">
+								<select class="form-control" name="comment[food]">
+									<option value="" disabled selected>Food Quality</option>
+									<option value="1">Low</option>
+									<option value="2">Sufficient</option>
+									<option value="3">Good</option>
+									<option value="4">Excellent</option>
+									<option value="5">Super</option>
+									<option value="0">I don't know</option>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<select class="form-control"  name="comment[price]">
+									<option value="" disabled selected>Price</option>
+									<option value="1">Low</option>
+									<option value="2">Sufficient</option>
+									<option value="3">Good</option>
+									<option value="4">Excellent</option>
+									<option value="5">Super</option>
+									<option value="0">I don't know</option>
+								</select>
+							</div>
+						</div><!--End Row -->    
+						
+						<div class="row">
+							<div class="col-md-6">
+									<select class="form-control"  name="comment[punctuality]">
+										<option value="" disabled selected>Punctuality</option>
+										<option value="1">Low</option>
+										<option value="2">Sufficient</option>
+										<option value="3">Good</option>
+										<option value="4">Excellent</option>
+										<option value="5">Super</option>
+										<option value="0">I don't know</option>
+								</select>                       
+							</div>
+							<div class="col-md-6">
+								<select class="form-control"  name="comment[courtesy]">
+									<option value="" disabled selected>Courtesy</option>
+									<option value="1">Low</option>
+									<option value="2">Sufficient</option>
+									<option value="3">Good</option>
+									<option value="4">Excellent</option>
+									<option value="5">Super</option>
+									<option value="0">I don't know</option>
+								</select>
+							</div>
+						</div><!--End Row -->     
+						<textarea name="comment[content]" id="review_text" class="form-control form-white" style="height:100px" placeholder="Write your review"></textarea>
+						<input type="submit" value="Submit" class="btn btn-submit" id="submit-review">
+					</form>
+				<div id="message-review"></div>
+			</div>
+		</div>
+	</div>
+<% end %>
+<!-- End Content =============================================== -->
+<!-- COMMON SCRIPTS -->
+<script src=<%= javascript_path("js/jquery-2.2.4.min.js") %>></script>
+<script src=<%= javascript_path("js/common_scripts_min.js") %>></script>
+<script src=<%= javascript_path("js/functions.js") %>></script>
+<script src=<%= javascript_path("js/validate.js") %>></script>
+
+<!-- SPECIFIC SCRIPTS -->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src=<%= javascript_path("js/map_single.js") %>></script>
+<script src=<%= javascript_path("js/infobox.js") %>></script>
+<script src=<%= javascript_path("js/jquery.sliderPro.min.js") %>></script>
+<script type="text/javascript">
+	$( document ).ready(function( $ ) {
+		$( '#Img_carousel' ).sliderPro({
+			width: 960,
+			height: 500,
+			fade: true,
+			arrows: true,
+			buttons: false,
+			fullScreen: false,
+			smallSize: 500,
+			startSlide: 0,
+			mediumSize: 1000,
+			largeSize: 3000,
+			thumbnailArrows: true,
+			autoplay: false
+		});
+	});
+</script>
