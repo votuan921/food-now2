@@ -14,7 +14,7 @@ class HomePagesController < ApplicationController
 
   def search_store
     @param = params[:store][:keyword]
-    @stores = Store.all.order(vip: :desc).where('name LIKE ? or address Like ?', "%#{@param}%", "%#{@param}%")
+    @stores = Store.joins(:products).order(vip: :desc).where('stores.name LIKE ? or stores.address LIKE ? or products.name LIKE ?', "%#{@param}%", "%#{@param}%", "%#{@param}%").group(:id)
     render "home_pages/search"
   end
 end

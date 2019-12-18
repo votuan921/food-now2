@@ -1,4 +1,6 @@
 class Store < ApplicationRecord
+  after_save :change_vip
+
   STORE_PARAMS = [:name, :address, :phone, :user_id, images_attributes:
   [:id, :url, :alt, :image_type, :_destroy]].freeze
 
@@ -14,5 +16,10 @@ class Store < ApplicationRecord
 
   accepts_nested_attributes_for :images, reject_if: :all_blank,
     allow_destroy: true
-  
+
+  def change_vip
+    if self.vip.nil?
+      self.update_attributes(vip: 0)
+    end 
+  end
 end

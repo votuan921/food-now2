@@ -15,6 +15,10 @@ module ApplicationHelper
     imageable.images.thumbnail.present? ? "#{imageable.images.thumbnail.first.url}" : "#{Settings.upload.default}"
   end
 
+  def get_banner imageable
+    imageable.images.banner.present? ? "#{imageable.images.banner.first.url}" : "img/avb.jpg"
+  end
+
   def get_thumbnails imageable
     imageable.images.thumbnail
   end

@@ -32,6 +32,7 @@ gem "carrierwave", "~> 2.0"
 gem "autonumeric-rails"
 gem "cancancan"
 gem "rails_admin"
+gem 'seed_dump'
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

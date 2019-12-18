@@ -15,7 +15,7 @@
           <a href="#">Forgot Password?</a>
         </div>
         <div class="text-left">
-            <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+            <i class="icon-facebook-7"></i> <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
         </div>
         <%= f.submit "Log in", class: "btn btn-submit"%>
       <% end %>
@@ -129,3 +129,19 @@
     </div><!-- End container -->
 </footer>
 <!-- End Footer =============================================== -->
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+        xfbml            : true,
+        version          : 'v5.0'
+        });
+    };
+
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
